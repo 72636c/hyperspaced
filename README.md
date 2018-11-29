@@ -5,6 +5,10 @@ automatic space insertion (ASI).
 
 ## CLI
 
+Prerequisites:
+
+- Go 1.11+
+
 ```shell
 go install ./cmd/spaced
 ```
@@ -25,4 +29,4 @@ hyperspaced.Spaced("gofmt urself")
 
 ## Mouseprint
 
-_This is a shameless clone of <https://www.npmjs.com/package/letter-spacing>._
+_This is a shameless rip-off of <https://www.npmjs.com/package/letter-spacing>._
