@@ -23,7 +23,7 @@ func SpacedN(str string, n int) string {
 		out += string(iter.Next()) + sep
 	}
 
-	return out[:len(str)-1]
+	return out[:len(out)-1]
 }
 
 func spaces(count int) string {
