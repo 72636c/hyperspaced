@@ -1,6 +1,8 @@
 package transform
 
 import (
+	"unicode/utf8"
+
 	"golang.org/x/text/unicode/norm"
 )
 
@@ -9,29 +11,48 @@ func Spaced(str string) string {
 }
 
 func SpacedN(str string, n int) string {
-	if str == "" {
-		return ""
-	}
-
-	sep := spaces(n)
-	out := ""
-
 	var iter norm.Iter
 	iter.InitString(norm.NFC, str)
 
+	var current, out string
+	separator := toSeparator(n)
+
 	for !iter.Done() {
-		out += string(iter.Next()) + sep
+		previous := current
+		current = string(iter.Next())
+
+		if shouldSeparate(previous, current) {
+			out += separator
+		}
+
+		out += current
 	}
 
-	return out[:len(out)-1]
+	return out
 }
 
-func spaces(count int) string {
+func toSeparator(length int) string {
 	out := ""
 
-	for index := 0; index < count; index++ {
+	for index := 0; index < length; index++ {
 		out += " "
 	}
 
 	return out
+}
+
+func shouldSeparate(previous, current string) bool {
+	return !isEmpty(previous) &&
+		!isZeroWidthJoiner(previous) &&
+		!isZeroWidthJoiner(current)
+}
+
+func isEmpty(str string) bool {
+	return str == ""
+}
+
+func isZeroWidthJoiner(str string) bool {
+	r, _ := utf8.DecodeRuneInString(str)
+
+	return r == '\u200d'
 }

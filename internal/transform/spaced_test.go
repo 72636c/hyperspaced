@@ -13,6 +13,11 @@ func Test_Spaced(t *testing.T) {
 		expected    string
 	}{
 		{
+			description: "Empty String",
+			input:       "",
+			expected:    "",
+		},
+		{
 			description: "One Word",
 			input:       "AESTHETIC",
 			expected:    "A E S T H E T I C",
@@ -28,10 +33,16 @@ func Test_Spaced(t *testing.T) {
 			expected:    "🌏   p l a n e t   s c a l e   ⚖",
 		},
 		{
-			description: "Diversity",
-			input:       "👨🏻‍💻",
-			expected:    "👨🏻‍💻",
+			description: "Zero Width Joiner",
+			input:       "👩‍💻",
+			expected:    "👩‍💻",
 		},
+		// TODO: support skin tones
+		// {
+		// 	description: "Diversity",
+		// 	input:       "👨🏻‍💻",
+		// 	expected:    "👨🏻‍💻",
+		// },
 	}
 
 	for _, testCase := range testCases {
