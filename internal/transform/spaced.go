@@ -1,6 +1,7 @@
 package transform
 
 import (
+	"unicode"
 	"unicode/utf8"
 
 	"golang.org/x/text/unicode/norm"
@@ -43,16 +44,30 @@ func toSeparator(length int) string {
 
 func shouldSeparate(previous, current string) bool {
 	return !isEmpty(previous) &&
-		!isZeroWidthJoiner(previous) &&
-		!isZeroWidthJoiner(current)
+		!isJoinControl(previous) &&
+		!isJoinControl(current) &&
+		!isModifierSymbol(current) &&
+		!isVariationSelector(current)
 }
 
 func isEmpty(str string) bool {
 	return str == ""
 }
 
-func isZeroWidthJoiner(str string) bool {
-	r, _ := utf8.DecodeRuneInString(str)
+func isJoinControl(str string) bool {
+	return unicode.In(firstRune(str), unicode.Join_Control)
+}
 
-	return r == '\u200d'
+func isModifierSymbol(str string) bool {
+	return unicode.In(firstRune(str), unicode.Sk)
+}
+
+// http://www.unicode.org/charts/PDF/UFE00.pdf
+func isVariationSelector(str string) bool {
+	return unicode.In(firstRune(str), unicode.Variation_Selector)
+}
+
+func firstRune(str string) rune {
+	r, _ := utf8.DecodeRuneInString(str)
+	return r
 }
