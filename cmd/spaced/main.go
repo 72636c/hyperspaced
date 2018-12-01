@@ -4,12 +4,12 @@ import (
 	"fmt"
 	"os"
 
-	"github.com/72636c/hyperspaced/internal"
-	"github.com/72636c/hyperspaced/internal/transform"
+	"github.com/72636c/hyperspaced/internal/text"
+	"github.com/72636c/hyperspaced/internal/text/transform"
 )
 
 func main() {
-	err := internal.LineFilter(transform.Spaced)
+	err := text.LineFilter(transform.Spaced)
 	if err != nil {
 		fmt.Fprintln(os.Stderr, "error: ", err)
 		os.Exit(1)

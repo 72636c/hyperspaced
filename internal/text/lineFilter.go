@@ -1,4 +1,4 @@
-package internal
+package text
 
 import (
 	"bufio"
@@ -6,8 +6,10 @@ import (
 	"os"
 )
 
+// TransformLine is a function that transforms a line of text.
 type TransformLine func(string) string
 
+// LineFilter transforms lines of text as they pass from stdin to stdout.
 func LineFilter(transform TransformLine) error {
 	scanner := bufio.NewScanner(os.Stdin)
 
