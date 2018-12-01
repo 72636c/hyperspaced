@@ -3,7 +3,7 @@ package transform_test
 import (
 	"testing"
 
-	"github.com/72636c/hyperspaced/internal/transform"
+	"github.com/72636c/hyperspaced"
 )
 
 func Test_Spaced(t *testing.T) {
@@ -47,7 +47,7 @@ func Test_Spaced(t *testing.T) {
 
 	for _, testCase := range testCases {
 		t.Run(testCase.description, func(t *testing.T) {
-			actual := transform.Spaced(testCase.input)
+			actual := hyperspaced.Spaced(testCase.input)
 			if actual != testCase.expected {
 				t.Errorf("expected '%s', received '%s'", testCase.expected, actual)
 			}
