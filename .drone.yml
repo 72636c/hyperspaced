@@ -11,6 +11,11 @@ steps:
     commands:
       - go get -u golang.org/x/lint/golint
       - ./scripts/lint-test.sh
+    when:
+      event:
+        exclude:
+          - pr
+          - tag
 
   - name: build + package
     image: golang:1.11.2
@@ -22,6 +27,11 @@ steps:
     volumes:
       - name: dist
         path: /tmp/dist
+    when:
+      event:
+        exclude:
+          - pr
+          - tag
 
   - name: publish
     image: node:10.14.0
@@ -35,6 +45,11 @@ steps:
     volumes:
       - name: dist
         path: /tmp/dist
+    when:
+      branch:
+        - master
+      event:
+        - push
 
 volumes:
   - name: dist
