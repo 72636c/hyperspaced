@@ -1,0 +1,41 @@
+kind: pipeline
+name: default
+
+platform:
+  os: linux
+  arch: arm64
+
+steps:
+  - name: lint + test
+    image: golang:1.11.2
+    commands:
+      - go get -u golang.org/x/lint/golint
+      - ./scripts/lint-test.sh
+
+  - name: build + package
+    image: golang:1.11.2
+    commands:
+      - apt-get update && apt-get install --assume-yes zip
+      - ./scripts/build-package.sh
+    environment:
+      OUTDIR: /tmp/dist
+    volumes:
+      - name: dist
+        path: /tmp/dist
+
+  - name: publish
+    image: node:10.14.0
+    commands:
+      - npx semantic-release
+    environment:
+      GITHUB_TOKEN:
+        from_secret: github/public_repo
+      # https://github.com/npm/uid-number/issues/7
+      NPM_CONFIG_UNSAFE_PERM: true
+    volumes:
+      - name: dist
+        path: /tmp/dist
+
+volumes:
+  - name: dist
+    temp: {}

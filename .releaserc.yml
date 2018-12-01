@@ -1,0 +1,16 @@
+repositoryUrl: git@github.com:72636c/hyperspaced
+branch: master
+
+ci: true
+debug: true
+
+plugins:
+  - '@semantic-release/commit-analyzer'
+  - '@semantic-release/release-notes-generator'
+  - - '@semantic-release/github'
+    - assets: '/tmp/dist/**'
+      failComment: false
+      failTitle: false
+      labels: false
+      releasedLabels: false
+      successComment: false
