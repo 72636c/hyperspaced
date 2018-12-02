@@ -1,4 +1,6 @@
+.temp/
 .vscode/
+dist/
 vendor/
 
 .DS_Store
