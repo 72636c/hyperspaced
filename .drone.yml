@@ -14,7 +14,7 @@ steps:
     when:
       event:
         exclude:
-          - pr
+          - pull_request
           - tag
 
   - name: build + package
@@ -30,7 +30,7 @@ steps:
     when:
       event:
         exclude:
-          - pr
+          - pull_request
           - tag
 
   - name: publish
