@@ -7,6 +7,8 @@ function build() {
   GOARCH="$2"
   COMMAND="$3"
 
+  GOARCH="$GOARCH" \
+  GOOS="$GOOS" \
   go build -o "$OUTDIR/$GOOS-$GOARCH/$COMMAND" "./cmd/$COMMAND"
 }
 
