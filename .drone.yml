@@ -7,7 +7,7 @@ platform:
 
 steps:
   - name: lint + test
-    image: golang:1.11.2
+    image: golang:1.11.4
     commands:
       - go get -u golang.org/x/lint/golint
       - ./scripts/lint-test.sh
@@ -18,7 +18,7 @@ steps:
           - tag
 
   - name: build + package
-    image: golang:1.11.2
+    image: golang:1.11.4
     commands:
       - apt-get update && apt-get install --assume-yes zip
       - ./scripts/build-package.sh
@@ -34,7 +34,7 @@ steps:
           - tag
 
   - name: publish
-    image: node:10.14.0
+    image: node:10.15.0
     commands:
       - npx semantic-release
     environment:
