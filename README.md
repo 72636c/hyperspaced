@@ -2,24 +2,18 @@
 
 [![Build Status](https://cloud.drone.io/api/badges/72636c/hyperspaced/status.svg)](https://cloud.drone.io/72636c/hyperspaced)
 [![Latest Release](https://img.shields.io/github/release/72636c/hyperspaced.svg?logo=github)](https://github.com/72636c/hyperspaced/releases/latest)
+[![GoDoc](https://godoc.org/github.com/72636c/hyperspaced?status.svg)](https://godoc.org/github.com/72636c/hyperspaced)
 
-Command line utilities to improve the aesthetics of your favourite phrases with
-automatic space insertion (ASI).
+Utilities to improve the aesthetics of your favourite phrases with automatic
+space insertion (ASI).
 
 ## Usage
 
 ### CLI
 
-Prerequisites:
-
-- Go 1.11+
-
 ```shell
-go install ./cmd/spaced
-```
-
-```shell
-echo 'gofmt urself' | spaced
+$ echo 'AESTHETIC' | spaced
+A E S T H E T I C
 ```
 
 ### Go
@@ -29,7 +23,11 @@ import (
   "github.com/72636c/hyperspaced"
 )
 
-hyperspaced.Spaced("gofmt urself")
+hyperspaced.Spaced("AESTHETIC")
+// A E S T H E T I C
+
+hyperspaced.SpacedN("AESTHETIC", 2)
+// A  E  S  T  H  E  T  I  C
 ```
 
 ## Meta

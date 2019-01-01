@@ -1,3 +1,5 @@
+// Package hyperspaced provides utilities to improve the aesthetics of your
+// favourite phrases with automatic space insertion (ASI).
 package hyperspaced
 
 import (
