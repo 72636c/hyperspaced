@@ -1,11 +1,19 @@
 package hyperspaced
 
+import (
+	"fmt"
+)
+
 func ExampleSpaced() {
-	Spaced("AESTHETIC")
+	output := Spaced("AESTHETIC")
+
+	fmt.Println(output)
 	// Output: A E S T H E T I C
 }
 
 func ExampleSpacedN() {
-	SpacedN("AESTHETIC", 2)
+	output := SpacedN("AESTHETIC", 2)
+
+	fmt.Println(output)
 	// Output: A  E  S  T  H  E  T  I  C
 }
