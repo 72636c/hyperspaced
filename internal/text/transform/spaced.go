@@ -2,6 +2,7 @@ package transform
 
 import (
 	"errors"
+	"strings"
 
 	"github.com/72636c/hyperspaced/internal/text"
 )
@@ -19,23 +20,26 @@ func SpacedN(str string, n int) string {
 
 	chars := text.SplitString(str)
 	sep := toSeparator(n)
-	str = "" // lol variable reassignment
 
-	for _, char := range chars {
-		str += char.String() + sep
+	var builder strings.Builder
+
+	for index, char := range chars {
+		builder.WriteString(char.String())
+
+		if index < len(chars)-1 {
+			builder.WriteString(sep)
+		}
 	}
 
-	if len(str) == 0 {
-		return ""
-	}
-
-	return str[:len(str)-len(sep)]
+	return builder.String()
 }
 
-func toSeparator(length int) (sep string) {
+func toSeparator(length int) string {
+	var builder strings.Builder
+
 	for index := 0; index < length; index++ {
-		sep += " "
+		builder.WriteString(" ")
 	}
 
-	return
+	return builder.String()
 }
