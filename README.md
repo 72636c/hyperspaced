@@ -14,6 +14,9 @@ space insertion (ASI).
 ```shell
 $ echo 'AESTHETIC' | spaced
 A E S T H E T I C
+
+$ echo 'AESTHETIC' | spaced 2
+A  E  S  T  H  E  T  I  C
 ```
 
 ### Go

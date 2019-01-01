@@ -1,17 +1,11 @@
 package main
 
 import (
-	"fmt"
 	"os"
 
-	"github.com/72636c/hyperspaced/internal/text"
-	"github.com/72636c/hyperspaced/internal/text/transform"
+	"github.com/72636c/hyperspaced/internal/cmd"
 )
 
 func main() {
-	err := text.LineFilter(transform.Spaced)
-	if err != nil {
-		fmt.Fprintln(os.Stderr, "error: ", err)
-		os.Exit(1)
-	}
+	cmd.Spaced(os.Stdin, os.Stdout, os.Args)
 }
