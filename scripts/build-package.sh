@@ -7,7 +7,13 @@ function build() {
   GOARCH="$2"
   COMMAND="$3"
 
-  go build -o "$OUTDIR/$GOOS-$GOARCH/$COMMAND" "./cmd/$COMMAND"
+  (
+    export CGO_ENABLED=0
+    export GOARCH="$GOARCH"
+    export GOOS="$GOOS"
+
+    go build -o "$OUTDIR/$GOOS-$GOARCH/$COMMAND" "./cmd/$COMMAND"
+  )
 }
 
 function package() {
@@ -18,11 +24,10 @@ function package() {
   zip --recurse-paths "./$GOOS-$GOARCH.zip" "./$GOOS-$GOARCH/"
   popd
 
-  rm --recursive "$OUTDIR/$GOOS-$GOARCH/"
+  rm -r "$OUTDIR/$GOOS-$GOARCH/"
 }
 
-CGO_ENABLED=0
-DEFAULT_OUTDIR="$(dirname ${BASH_SOURCE[0]})/../dist"
+DEFAULT_OUTDIR="$(dirname "${BASH_SOURCE[0]}")/../dist"
 OUTDIR="${OUTDIR:-$DEFAULT_OUTDIR}"
 
 build darwin amd64 spaced
