@@ -24,7 +24,7 @@ function package() {
   zip --recurse-paths "./$GOOS-$GOARCH.zip" "./$GOOS-$GOARCH/"
   popd
 
-  rm --recursive "$OUTDIR/$GOOS-$GOARCH/"
+  rm -r "$OUTDIR/$GOOS-$GOARCH/"
 }
 
 DEFAULT_OUTDIR="$(dirname "${BASH_SOURCE[0]}")/../dist"
