@@ -2,6 +2,7 @@
 
 [![Build Status](https://cloud.drone.io/api/badges/72636c/hyperspaced/status.svg)](https://cloud.drone.io/72636c/hyperspaced)
 [![Latest Release](https://img.shields.io/github/release/72636c/hyperspaced.svg?logo=github)](https://github.com/72636c/hyperspaced/releases/latest)
+[![GoDoc](https://godoc.org/github.com/72636c/hyperspaced?status.svg)](https://godoc.org/github.com/72636c/hyperspaced)
 
 Utilities to improve the aesthetics of your favourite phrases with automatic
 space insertion (ASI).
