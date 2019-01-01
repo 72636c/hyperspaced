@@ -12,7 +12,10 @@ function build() {
     export GOARCH="$GOARCH"
     export GOOS="$GOOS"
 
-    go build -o "$OUTDIR/$GOOS-$GOARCH/$COMMAND" "./cmd/$COMMAND"
+    go build                            \
+    -ldflags '-extldflags "-static"'    \
+    -o "$OUTDIR/$GOOS-$GOARCH/$COMMAND" \
+    "./cmd/$COMMAND"
   )
 }
 
