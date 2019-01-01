@@ -1,6 +1,7 @@
 package text
 
 import (
+	"strings"
 	"unicode"
 	"unicode/utf8"
 
@@ -10,12 +11,14 @@ import (
 // Char represents a character. Whatever that means.
 type Char []rune
 
-func (char Char) String() (str string) {
+func (char Char) String() string {
+	var builder strings.Builder
+
 	for _, r := range char {
-		str += string(r)
+		builder.WriteRune(r)
 	}
 
-	return
+	return builder.String()
 }
 
 // SplitString splits a string into a slice of characters.
