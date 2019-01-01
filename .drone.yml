@@ -1,3 +1,4 @@
+---
 kind: pipeline
 name: default
 
@@ -54,3 +55,7 @@ steps:
 volumes:
   - name: dist
     temp: {}
+
+---
+kind: signature
+hmac: 477adf6101919505d45c6ee4aa57a7259adc3d6d3112ea27281a49453ce8902c
