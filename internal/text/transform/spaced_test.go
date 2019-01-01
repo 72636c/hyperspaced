@@ -39,10 +39,8 @@ func Test_Spaced(t *testing.T) {
 			actual := hyperspaced.Spaced(testCase.input)
 			if actual != testCase.expected {
 				t.Errorf(
-					"expected %+q (%s), received %+q (%s)",
+					"expected %+[1]q (%[1]s), received %+[2]q (%[2]s)",
 					testCase.expected,
-					testCase.expected,
-					actual,
 					actual,
 				)
 			}
@@ -76,10 +74,8 @@ func Test_SpacedN(t *testing.T) {
 			actual := hyperspaced.SpacedN(testCase.inputString, testCase.inputN)
 			if actual != testCase.expected {
 				t.Errorf(
-					"expected %+q (%s), received %+q (%s)",
+					"expected %+[1]q (%[1]s), received %+[2]q (%[2]s)",
 					testCase.expected,
-					testCase.expected,
-					actual,
 					actual,
 				)
 			}
