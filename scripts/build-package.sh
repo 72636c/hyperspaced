@@ -12,7 +12,10 @@ function build() {
     export GOARCH="$GOARCH"
     export GOOS="$GOOS"
 
-    go build -o "$OUTDIR/$GOOS-$GOARCH/$COMMAND" "./cmd/$COMMAND"
+    go build                            \
+    -ldflags '-extldflags "-static"'    \
+    -o "$OUTDIR/$GOOS-$GOARCH/$COMMAND" \
+    "./cmd/$COMMAND"
   )
 }
 
@@ -32,6 +35,8 @@ OUTDIR="${OUTDIR:-$DEFAULT_OUTDIR}"
 
 build darwin amd64 spaced
 build linux amd64 spaced
+build windows amd64 spaced
 
 package darwin amd64
 package linux amd64
+package windows amd64
