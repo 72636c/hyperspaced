@@ -6,7 +6,7 @@ import (
 )
 
 // NewSpace constructs a transformation that appends n spaces to each non-final
-// character.
+// substring.
 func NewSpace(n int) TransformSubstring {
 	if n < 0 {
 		panic(errors.New("hyperspaced/internal/text/transform.NewSpace: really?"))
