@@ -1,8 +1,10 @@
-package cmd
+package cmd_test
 
 import (
 	"strings"
 	"testing"
+
+	"github.com/72636c/hyperspaced/internal/cmd"
 )
 
 func Test_Spaced(t *testing.T) {
@@ -31,7 +33,7 @@ func Test_Spaced(t *testing.T) {
 			reader := strings.NewReader(testCase.input)
 			writer := new(strings.Builder)
 
-			Spaced(reader, writer, testCase.args)
+			cmd.Spaced(reader, writer, testCase.args)
 
 			actual := writer.String()
 			if actual != testCase.expected {
