@@ -70,7 +70,7 @@ type spacedConfig struct {
 	transformN func(str string, n int) string
 }
 
-func parseConfig(args []string) (*spacedConfig, error) {
+func parseSpacedConfig(args []string) (*spacedConfig, error) {
 	config := new(spacedConfig)
 
 	for index, variable := range spacedVariables {

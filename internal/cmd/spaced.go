@@ -11,7 +11,7 @@ import (
 // Spaced executes line filters based on the transformations in package
 // hyperspaced.
 func Spaced(reader io.Reader, writer io.Writer, args []string) {
-	config, err := parseConfig(args)
+	config, err := parseSpacedConfig(args)
 	if err != nil {
 		fmt.Fprintln(os.Stderr, spacedUsage())
 		fmt.Fprintln(os.Stderr, "error:", err)
