@@ -6,12 +6,20 @@ import (
 	"github.com/72636c/hyperspaced/internal/text/transform"
 )
 
-// Spaced inserts a space between each character in a string.
-func Spaced(str string) string {
-	return transform.Spaced(str)
+var (
+	// Spaced is an alias for One that is retained for backwards compatibility.
+	Spaced = One
+
+	// SpacedN is an alias for N that is retained for backwards compatibility.
+	SpacedN = N
+)
+
+// N inserts n spaces between each character in a string.
+func N(str string, n int) string {
+	return transform.SpacedN(str, n)
 }
 
-// SpacedN inserts n spaces between each character in a string.
-func SpacedN(str string, n int) string {
-	return transform.SpacedN(str, n)
+// One inserts a space between each character in a string.
+func One(str string) string {
+	return transform.Spaced(str)
 }

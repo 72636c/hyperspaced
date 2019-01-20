@@ -6,7 +6,69 @@ import (
 	"github.com/72636c/hyperspaced"
 )
 
-func Test_Spaced(t *testing.T) {
+func Suite_N(t *testing.T, f func(string, int) string) {
+	testCases := []struct {
+		description string
+		inputString string
+		inputN      int
+		expected    string
+	}{
+		{
+			description: "One Space",
+			inputString: "AESTHETIC",
+			inputN:      1,
+			expected:    "A E S T H E T I C",
+		},
+		{
+			description: "Two Spaces",
+			inputString: "AESTHETIC",
+			inputN:      2,
+			expected:    "A  E  S  T  H  E  T  I  C",
+		},
+	}
+
+	for _, testCase := range testCases {
+		t.Run(testCase.description, func(t *testing.T) {
+			actual := f(testCase.inputString, testCase.inputN)
+			if actual != testCase.expected {
+				t.Errorf(
+					"expected %+[1]q (%[1]s), received %+[2]q (%[2]s)",
+					testCase.expected,
+					actual,
+				)
+			}
+		})
+	}
+}
+
+func Suite_N_Panics_OnNegativeN(t *testing.T, f func(string, int) string) {
+	expectedMessage := "hyperspaced/internal/text.SpacedN: really?"
+
+	defer func() {
+		r := recover()
+		if r == nil {
+			t.Error("expected recovery")
+			t.FailNow()
+		}
+
+		err, ok := r.(error)
+		if !ok {
+			t.Errorf("expected error, received %T", r)
+			t.FailNow()
+		}
+
+		message := err.Error()
+		if message != expectedMessage {
+			t.Errorf("expected %s, got %s", expectedMessage, message)
+		}
+	}()
+
+	f("", -1)
+
+	t.Error("expected panic")
+}
+
+func Suite_One(t *testing.T, f func(string) string) {
 	testCases := []struct {
 		description string
 		input       string
@@ -36,7 +98,7 @@ func Test_Spaced(t *testing.T) {
 
 	for _, testCase := range testCases {
 		t.Run(testCase.description, func(t *testing.T) {
-			actual := hyperspaced.Spaced(testCase.input)
+			actual := f(testCase.input)
 			if actual != testCase.expected {
 				t.Errorf(
 					"expected %+[1]q (%[1]s), received %+[2]q (%[2]s)",
@@ -46,66 +108,28 @@ func Test_Spaced(t *testing.T) {
 			}
 		})
 	}
+}
+
+func Test_N(t *testing.T) {
+	Suite_N(t, hyperspaced.N)
+}
+
+func Test_N_Panics_OnNegativeN(t *testing.T) {
+	Suite_N_Panics_OnNegativeN(t, hyperspaced.N)
+}
+
+func Test_One(t *testing.T) {
+	Suite_One(t, hyperspaced.One)
+}
+
+func Test_Spaced(t *testing.T) {
+	Suite_One(t, hyperspaced.Spaced)
 }
 
 func Test_SpacedN(t *testing.T) {
-	testCases := []struct {
-		description string
-		inputString string
-		inputN      int
-		expected    string
-	}{
-		{
-			description: "One Space",
-			inputString: "AESTHETIC",
-			inputN:      1,
-			expected:    "A E S T H E T I C",
-		},
-		{
-			description: "Two Spaces",
-			inputString: "AESTHETIC",
-			inputN:      2,
-			expected:    "A  E  S  T  H  E  T  I  C",
-		},
-	}
-
-	for _, testCase := range testCases {
-		t.Run(testCase.description, func(t *testing.T) {
-			actual := hyperspaced.SpacedN(testCase.inputString, testCase.inputN)
-			if actual != testCase.expected {
-				t.Errorf(
-					"expected %+[1]q (%[1]s), received %+[2]q (%[2]s)",
-					testCase.expected,
-					actual,
-				)
-			}
-		})
-	}
+	Suite_N(t, hyperspaced.SpacedN)
 }
 
 func Test_SpacedN_Panics_OnNegativeN(t *testing.T) {
-	expectedMessage := "hyperspaced.SpacedN: really?"
-
-	defer func() {
-		r := recover()
-		if r == nil {
-			t.Error("expected recovery")
-			t.FailNow()
-		}
-
-		err, ok := r.(error)
-		if !ok {
-			t.Errorf("expected error, received %T", r)
-			t.FailNow()
-		}
-
-		message := err.Error()
-		if message != expectedMessage {
-			t.Errorf("expected %s, got %s", expectedMessage, message)
-		}
-	}()
-
-	hyperspaced.SpacedN("", -1)
-
-	t.Error("expected panic")
+	Suite_N_Panics_OnNegativeN(t, hyperspaced.SpacedN)
 }

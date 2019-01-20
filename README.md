@@ -26,10 +26,10 @@ import (
   "github.com/72636c/hyperspaced"
 )
 
-hyperspaced.Spaced("AESTHETIC")
+hyperspaced.One("AESTHETIC")
 // A E S T H E T I C
 
-hyperspaced.SpacedN("AESTHETIC", 2)
+hyperspaced.N("AESTHETIC", 2)
 // A  E  S  T  H  E  T  I  C
 ```
 
