@@ -15,8 +15,8 @@ space insertion (ASI).
 $ echo 'AESTHETIC' | spaced
 A E S T H E T I C
 
-$ echo 'AESTHETIC' | spaced 2
-A  E  S  T  H  E  T  I  C
+$ echo 'AESTHETIC' | spaced 2 lower
+a  e  s  t  h  e  t  i  c
 ```
 
 ### Go
@@ -29,8 +29,8 @@ import (
 hyperspaced.One("AESTHETIC")
 // A E S T H E T I C
 
-hyperspaced.N("AESTHETIC", 2)
-// A  E  S  T  H  E  T  I  C
+hyperspaced.LowerN("AESTHETIC", 2)
+// a  e  s  t  h  e  t  i  c
 ```
 
 ## Meta

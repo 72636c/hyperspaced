@@ -26,6 +26,12 @@ func Test_Spaced(t *testing.T) {
 			input:       "AESTHETIC",
 			expected:    "A  E  S  T  H  E  T  I  C\n",
 		},
+		{
+			description: "string case",
+			args:        []string{"spaced", "2", "lower"},
+			input:       "AESTHETIC",
+			expected:    "a  e  s  t  h  e  t  i  c\n",
+		},
 	}
 
 	for _, testCase := range testCases {
