@@ -14,14 +14,14 @@ var (
 	SpacedN = N
 )
 
-// Lower inserts a space between each character in a string, and converts them
-// to lowercase.
+// Lower inserts a space between each character in a string, and converts to
+// lowercase.
 func Lower(str string) string {
 	return LowerN(str, 1)
 }
 
-// LowerN inserts n spaces between each character in a string, and converts them
-// to lowercase.
+// LowerN inserts n spaces between each character in a string, and converts to
+// lowercase.
 func LowerN(str string, n int) string {
 	return transform.Chars(str, transform.Lowercase, transform.NewSpace(n))
 }
@@ -48,14 +48,14 @@ func SpongeN(str string, n int) string {
 	return transform.Chars(str, transform.Spongecase, transform.NewSpace(n))
 }
 
-// Upper inserts a space between each character in a string, and converts them
-// to uppercase.
+// Upper inserts a space between each character in a string, and converts to
+// uppercase.
 func Upper(str string) string {
 	return UpperN(str, 1)
 }
 
-// UpperN inserts n spaces between each character in a string, and converts them
-// to uppercase.
+// UpperN inserts n spaces between each character in a string, and converts to
+// uppercase.
 func UpperN(str string, n int) string {
 	return transform.Chars(str, transform.Uppercase, transform.NewSpace(n))
 }
