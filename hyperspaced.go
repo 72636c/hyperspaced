@@ -14,6 +14,14 @@ var (
 	SpacedN = N
 )
 
+func Lower(str string) string {
+	return LowerN(str, 1)
+}
+
+func LowerN(str string, n int) string {
+	return transform.Chars(str, transform.Lowercase, transform.NewSpace(n))
+}
+
 // N inserts n spaces between each character in a string.
 func N(str string, n int) string {
 	return transform.Chars(str, transform.NewSpace(n))
@@ -22,4 +30,20 @@ func N(str string, n int) string {
 // One inserts a space between each character in a string.
 func One(str string) string {
 	return N(str, 1)
+}
+
+func Sponge(str string) string {
+	return SpongeN(str, 1)
+}
+
+func SpongeN(str string, n int) string {
+	return transform.Chars(str, transform.Spongecase, transform.NewSpace(n))
+}
+
+func Upper(str string) string {
+	return UpperN(str, 1)
+}
+
+func UpperN(str string, n int) string {
+	return transform.Chars(str, transform.Uppercase, transform.NewSpace(n))
 }
