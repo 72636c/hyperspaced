@@ -15,7 +15,7 @@ func Spaced(str string) string {
 // SpacedN inserts n spaces between each character in a string.
 func SpacedN(str string, n int) string {
 	if n < 0 {
-		panic(errors.New("hyperspaced.SpacedN: really?"))
+		panic(errors.New("hyperspaced/internal/text.SpacedN: really?"))
 	}
 
 	chars := text.SplitString(str)
