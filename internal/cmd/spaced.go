@@ -6,8 +6,8 @@ import (
 	"os"
 	"strconv"
 
-	"github.com/72636c/hyperspaced/internal/text"
-	"github.com/72636c/hyperspaced/internal/text/transform"
+	"github.com/72636c/hyperspaced"
+	"github.com/72636c/hyperspaced/internal/transform"
 )
 
 var usage = `spaced [n]
@@ -15,6 +15,8 @@ var usage = `spaced [n]
     number of spaces between each character (default 1)
 `
 
+// Spaced executes line filters based on the transformations in package
+// hyperspaced.
 func Spaced(reader io.Reader, writer io.Writer, args []string) {
 	n, err := spacesFromArgs(args)
 	if err != nil {
@@ -24,10 +26,10 @@ func Spaced(reader io.Reader, writer io.Writer, args []string) {
 	}
 
 	transformLine := func(str string) string {
-		return transform.SpacedN(str, n)
+		return hyperspaced.N(str, n)
 	}
 
-	err = text.LineFilter(reader, writer, transformLine)
+	err = transform.LineFilter(reader, writer, transformLine)
 	if err != nil {
 		fmt.Fprintln(os.Stderr, "error:", err)
 		os.Exit(1)

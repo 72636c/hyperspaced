@@ -3,7 +3,7 @@
 package hyperspaced
 
 import (
-	"github.com/72636c/hyperspaced/internal/text/transform"
+	"github.com/72636c/hyperspaced/internal/transform"
 )
 
 var (
@@ -16,10 +16,10 @@ var (
 
 // N inserts n spaces between each character in a string.
 func N(str string, n int) string {
-	return transform.SpacedN(str, n)
+	return transform.Chars(str, transform.NewSpace(n))
 }
 
 // One inserts a space between each character in a string.
 func One(str string) string {
-	return transform.Spaced(str)
+	return N(str, 1)
 }

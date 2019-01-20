@@ -1,4 +1,4 @@
-package text
+package transform
 
 import (
 	"bufio"
