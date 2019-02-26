@@ -11,6 +11,8 @@ steps:
     image: 72636c/golang:1.11
     commands:
       - ./scripts/lint-test.sh
+    depends_on:
+      - clone
     when:
       event:
         - push
@@ -19,6 +21,8 @@ steps:
     image: 72636c/golang:1.11
     commands:
       - ./scripts/build-package.sh
+    depends_on:
+      - clone
     environment:
       OUTDIR: /tmp/dist
     volumes:
@@ -52,4 +56,4 @@ volumes:
 
 ---
 kind: signature
-hmac: bb3247f2a45a6d751f0874d9f7f0f112914a0d0c85c61a3c865b57bc4b9d3a59
+hmac: b578a707c2e283574bf7a857b36d39fe39430d2e4bb4746bbe8692a37218eb9a
