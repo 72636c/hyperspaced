@@ -8,21 +8,21 @@ platform:
 
 steps:
   - name: lint + test
-    image: golang:1.11.4
+    image: 72636c/golang:1.11
     commands:
-      - go get -u golang.org/x/lint/golint
       - ./scripts/lint-test.sh
+    depends_on:
+      - clone
     when:
       event:
-        exclude:
-          - pull_request
-          - tag
+        - push
 
   - name: build + package
-    image: golang:1.11.4
+    image: 72636c/golang:1.11
     commands:
-      - apt-get update && apt-get install --assume-yes zip
       - ./scripts/build-package.sh
+    depends_on:
+      - clone
     environment:
       OUTDIR: /tmp/dist
     volumes:
@@ -30,9 +30,7 @@ steps:
         path: /tmp/dist
     when:
       event:
-        exclude:
-          - pull_request
-          - tag
+        - push
 
   - name: publish
     image: node:10.15.0
@@ -58,4 +56,4 @@ volumes:
 
 ---
 kind: signature
-hmac: 477adf6101919505d45c6ee4aa57a7259adc3d6d3112ea27281a49453ce8902c
+hmac: b578a707c2e283574bf7a857b36d39fe39430d2e4bb4746bbe8692a37218eb9a
