@@ -36,6 +36,8 @@ steps:
     image: node:10.15.0
     commands:
       - npx semantic-release
+    depends_on:
+      - build + package
     environment:
       GITHUB_TOKEN:
         from_secret: github/public_repo
@@ -56,4 +58,4 @@ volumes:
 
 ---
 kind: signature
-hmac: b578a707c2e283574bf7a857b36d39fe39430d2e4bb4746bbe8692a37218eb9a
+hmac: 892f5a40c66bf5f9647e7df4a3894145a8afb14d0dda16f31e1a8a5d9dbb32eb
