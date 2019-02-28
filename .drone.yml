@@ -8,7 +8,7 @@ platform:
 
 steps:
   - name: lint + test
-    image: 72636c/golang:1.11
+    image: 72636c/golang:1.12
     commands:
       - ./scripts/lint-test.sh
     depends_on:
@@ -18,7 +18,7 @@ steps:
         - push
 
   - name: build + package
-    image: 72636c/golang:1.11
+    image: 72636c/golang:1.12
     commands:
       - ./scripts/build-package.sh
     depends_on:
@@ -33,7 +33,7 @@ steps:
         - push
 
   - name: publish
-    image: node:10.15.0
+    image: node:10.15
     commands:
       - npx semantic-release
     depends_on:
@@ -58,4 +58,4 @@ volumes:
 
 ---
 kind: signature
-hmac: 892f5a40c66bf5f9647e7df4a3894145a8afb14d0dda16f31e1a8a5d9dbb32eb
+hmac: 191135fb2decc1fa1720482a10d46f16e21b2c28bca8de1f3927936a90b19662
