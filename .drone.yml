@@ -15,6 +15,7 @@ steps:
       - clone
     when:
       event:
+        - pr
         - push
 
   - name: build + package
@@ -30,6 +31,7 @@ steps:
         path: /tmp/dist
     when:
       event:
+        - pr
         - push
 
   - name: publish
@@ -50,6 +52,7 @@ steps:
       branch:
         - master
       event:
+        - pr
         - push
 
 volumes:
@@ -58,4 +61,4 @@ volumes:
 
 ---
 kind: signature
-hmac: 191135fb2decc1fa1720482a10d46f16e21b2c28bca8de1f3927936a90b19662
+hmac: 8df40693741966a4ed256e6ce66532ef4dd28ce4061bb7f40befd8449ed0dc81
