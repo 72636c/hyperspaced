@@ -2,6 +2,11 @@
 
 set -euxo pipefail
 
+if [[ -n $(gofmt -l -s .) ]]; then
+  gofmt -d -s .
+  exit 1
+fi
+
 golint ./...
 go test -cover -v ./...
 go vet ./...
