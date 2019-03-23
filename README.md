@@ -5,8 +5,8 @@
 [![GoDoc](https://godoc.org/github.com/72636c/hyperspaced?status.svg)](https://godoc.org/github.com/72636c/hyperspaced)
 [![Go Report Card](https://goreportcard.com/badge/github.com/72636c/hyperspaced)](https://goreportcard.com/report/github.com/72636c/hyperspaced)
 
-Utilities to improve the aesthetics of your favourite phrases with automatic
-space insertion (ASI).
+> Utilities to improve the aesthetics of your favourite phrases with automatic
+> space insertion (ASI).
 
 ## Usage
 
