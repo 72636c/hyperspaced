@@ -2,12 +2,13 @@
 
 set -euxo pipefail
 
-if [[ -n $(gofmt -l -s .) ]]; then
-  gofmt -d -s .
-  exit 1
-fi
+go test -cover -v ./...
+
+gofmt -d -s .
+test -z "$(gofmt -d -s .)"
 
 golint ./...
-go test -cover -v ./...
+test -z "$(golint ./...)"
+
 go vet ./...
 go vet -vettool="$(command -v shadow)" ./...
