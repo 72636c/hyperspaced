@@ -5,9 +5,9 @@ import (
 )
 
 var (
-	_ TransformSubstring = Lowercase
-	_ TransformSubstring = Spongecase
-	_ TransformSubstring = Uppercase
+	_ Substring = Lowercase
+	_ Substring = Spongecase
+	_ Substring = Uppercase
 )
 
 // Lowercase converts each substring to lowercase.

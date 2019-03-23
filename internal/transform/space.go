@@ -7,7 +7,7 @@ import (
 
 // NewSpace constructs a transformation that appends n spaces to each non-final
 // substring.
-func NewSpace(n int) TransformSubstring {
+func NewSpace(n int) Substring {
 	if n < 0 {
 		panic(errors.New("hyperspaced/internal/text/transform.NewSpace: really?"))
 	}

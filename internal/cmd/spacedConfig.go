@@ -16,7 +16,7 @@ var (
 	}
 
 	spacedVariables = []*spacedVariable{
-		&spacedVariable{
+		{
 			name:         "n",
 			description:  "number of spaces between each character",
 			valueDefault: "1",
@@ -39,7 +39,7 @@ var (
 				return nil
 			},
 		},
-		&spacedVariable{
+		{
 			name:         "case",
 			description:  caseDescription(),
 			valueDefault: `""`,

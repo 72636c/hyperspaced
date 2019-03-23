@@ -6,14 +6,14 @@ import (
 	"io"
 )
 
-// TransformLine is a function that transforms a line of text.
-type TransformLine func(string) string
+// Line is a function that transforms a line of text.
+type Line func(string) string
 
 // LineFilter transforms lines of text as they pass from a reader to a writer.
 func LineFilter(
 	reader io.Reader,
 	writer io.Writer,
-	transform TransformLine,
+	transform Line,
 ) error {
 	scanner := bufio.NewScanner(reader)
 
