@@ -52,7 +52,6 @@ steps:
       branch:
         - master
       event:
-        - pull_request
         - push
 
 volumes:
@@ -61,4 +60,4 @@ volumes:
 
 ---
 kind: signature
-hmac: b9b4e4ff70c96de352b6f2d930d68061a5d1d6550490851d6b764eb3c40e1e00
+hmac: 831c67845852858ab26837451af0940090b0b462ed84f46ace766675e3a37d98
