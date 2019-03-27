@@ -12,7 +12,7 @@ func NewSpace(n int) Substring {
 		panic(errors.New("hyperspaced/internal/text/transform.NewSpace: really?"))
 	}
 
-	sep := toSeparator(n)
+	sep := strings.Repeat(" ", n)
 
 	return func(length, index int, str string) string {
 		if index < length-1 {
@@ -21,14 +21,4 @@ func NewSpace(n int) Substring {
 
 		return str
 	}
-}
-
-func toSeparator(length int) string {
-	var builder strings.Builder
-
-	for index := 0; index < length; index++ {
-		builder.WriteString(" ")
-	}
-
-	return builder.String()
 }
