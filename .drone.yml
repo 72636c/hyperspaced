@@ -1,5 +1,6 @@
 ---
 kind: pipeline
+type: docker
 name: default
 
 platform:
@@ -60,4 +61,4 @@ volumes:
 
 ---
 kind: signature
-hmac: 831c67845852858ab26837451af0940090b0b462ed84f46ace766675e3a37d98
+hmac: 43eeb9c363df652fc7cc29f0ff89a61970aadc937c3369481fb2f592044b9e0b
