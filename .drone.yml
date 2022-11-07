@@ -36,7 +36,7 @@ steps:
         - push
 
   - name: publish
-    image: node:10.15
+    image: node:lts-alpine
     commands:
       - npx semantic-release
     depends_on:
@@ -61,4 +61,4 @@ volumes:
 
 ---
 kind: signature
-hmac: 43eeb9c363df652fc7cc29f0ff89a61970aadc937c3369481fb2f592044b9e0b
+hmac: ce47bf9a93178d59231df25decf3ef0d1f0cff917ecb8a7d5186e21f9ec66212
